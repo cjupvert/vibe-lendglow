@@ -3,6 +3,18 @@
 import { useState } from "react";
 import Link from "next/link";
 
+interface PreviewContent {
+  title: string;
+  subtitle: string;
+  property?: string;
+  price?: string;
+  features?: string[];
+  highlight?: string;
+  content?: string[];
+  stats?: string[];
+  message?: string;
+}
+
 export default function CreateAttachment() {
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [showCarousel, setShowCarousel] = useState(false);
@@ -506,7 +518,7 @@ export default function CreateAttachment() {
               Create New Attachment
             </h1>
             <p className="text-gray-400 mt-2">
-              Choose the type of attachment you'd like to create
+              Choose the type of attachment you&apos;d like to create
             </p>
           </div>
         </div>
@@ -753,14 +765,24 @@ export default function CreateAttachment() {
                         {selectedType === "Open House Flyers" && (
                           <div className="space-y-3">
                             <div className="text-3xl font-bold">
-                              {currentVariant.previewContent.property}
+                              {
+                                (
+                                  currentVariant.previewContent as PreviewContent
+                                ).property
+                              }
                             </div>
                             <div className="text-xl font-semibold">
-                              {currentVariant.previewContent.price}
+                              {
+                                (
+                                  currentVariant.previewContent as PreviewContent
+                                ).price
+                              }
                             </div>
                             <div className="flex justify-center space-x-3 text-sm">
-                              {currentVariant.previewContent.features?.map(
-                                (feature, index) => (
+                              {(
+                                currentVariant.previewContent as PreviewContent
+                              ).features?.map(
+                                (feature: string, index: number) => (
                                   <span
                                     key={index}
                                     className="bg-white bg-opacity-20 px-3 py-2 rounded"
@@ -775,45 +797,49 @@ export default function CreateAttachment() {
 
                         {selectedType.includes("Newsletter") && (
                           <div className="space-y-4">
-                            {currentVariant.previewContent.highlight && (
+                            {(currentVariant.previewContent as PreviewContent)
+                              .highlight && (
                               <div className="bg-white bg-opacity-20 px-4 py-2 rounded text-lg font-semibold inline-block">
-                                {currentVariant.previewContent.highlight}
+                                {
+                                  (
+                                    currentVariant.previewContent as PreviewContent
+                                  ).highlight
+                                }
                               </div>
                             )}
                             <div className="space-y-2">
-                              {currentVariant.previewContent.content?.map(
-                                (item, index) => (
-                                  <div
-                                    key={index}
-                                    className="text-sm opacity-90"
-                                  >
-                                    • {item}
-                                  </div>
-                                )
-                              )}
+                              {(
+                                currentVariant.previewContent as PreviewContent
+                              ).content?.map((item: string, index: number) => (
+                                <div key={index} className="text-sm opacity-90">
+                                  • {item}
+                                </div>
+                              ))}
                             </div>
                           </div>
                         )}
 
                         {selectedType === "Weekly Market Reports" && (
                           <div className="space-y-3">
-                            {currentVariant.previewContent.stats?.map(
-                              (stat, index) => (
-                                <div
-                                  key={index}
-                                  className="bg-white bg-opacity-20 px-3 py-2 rounded text-sm font-semibold inline-block mr-2"
-                                >
-                                  {stat}
-                                </div>
-                              )
-                            )}
+                            {(
+                              currentVariant.previewContent as PreviewContent
+                            ).stats?.map((stat: string, index: number) => (
+                              <div
+                                key={index}
+                                className="bg-white bg-opacity-20 px-3 py-2 rounded text-sm font-semibold inline-block mr-2"
+                              >
+                                {stat}
+                              </div>
+                            ))}
                           </div>
                         )}
 
                         {selectedType === "Marketing Flyer Templates" && (
                           <div className="space-y-3">
-                            {currentVariant.previewContent.features?.map(
-                              (feature, index) => (
+                            {(
+                              currentVariant.previewContent as PreviewContent
+                            ).features?.map(
+                              (feature: string, index: number) => (
                                 <div key={index} className="text-lg">
                                   ✓ {feature}
                                 </div>
@@ -825,7 +851,11 @@ export default function CreateAttachment() {
                         {selectedType === "Birthday and Anniversary Cards" && (
                           <div className="text-center">
                             <div className="text-sm opacity-90 mt-4">
-                              {currentVariant.previewContent.message}
+                              {
+                                (
+                                  currentVariant.previewContent as PreviewContent
+                                ).message
+                              }
                             </div>
                           </div>
                         )}
