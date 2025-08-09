@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Attachments() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -317,7 +318,10 @@ export default function Attachments() {
         <h1 className="text-3xl font-bold text-foreground">Attachments</h1>
 
         <div className="flex items-center space-x-3">
-          <button className="flex items-center px-4 py-2 bg-primary-green text-white rounded-lg hover:bg-green-600 transition-colors">
+          <Link 
+            href="/attachments/create"
+            className="flex items-center px-4 py-2 bg-primary-green text-white rounded-lg hover:bg-green-600 transition-colors"
+          >
             <svg
               width="20"
               height="20"
@@ -342,7 +346,7 @@ export default function Attachments() {
               />
             </svg>
             Create Attachment
-          </button>
+          </Link>
         </div>
       </div>
 
