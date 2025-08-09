@@ -127,11 +127,6 @@ export default function Attachments() {
     },
   ];
 
-  // Get unique attachment types for filtering
-  const attachmentTypes = [
-    ...new Set(mockAttachments.map((attachment) => attachment.type)),
-  ];
-
   // Filter attachments based on search term
   const filteredAttachments = mockAttachments.filter(
     (attachment) =>
@@ -318,7 +313,7 @@ export default function Attachments() {
         <h1 className="text-3xl font-bold text-foreground">Attachments</h1>
 
         <div className="flex items-center space-x-3">
-          <Link 
+          <Link
             href="/attachments/create"
             className="flex items-center px-4 py-2 bg-primary-green text-white rounded-lg hover:bg-green-600 transition-colors"
           >

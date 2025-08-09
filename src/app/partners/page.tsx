@@ -8,7 +8,7 @@ export default function Partners() {
           <span className="text-primary-green font-semibold">@sody</span> This
           page will look the exact same as the Clients page. Should we merge
           these two into the same page? with each person in the table being
-          classified as a "Client" or a "Partner"?
+          classified as a &quot;Client&quot; or a &quot;Partner&quot;?
           <br />
           <br />
           Or are these two completely different concepts where they should be
